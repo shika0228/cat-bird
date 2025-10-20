@@ -179,13 +179,6 @@ gsap.to("#top-stamp-1,#top-stamp-9", {
     yoyo: true,
     repeat: -1
   });
-  gsap.to(".top-btn", {
-    y: -30,
-    duration: 1.3,
-    ease: "sine.inOut",
-    yoyo: true,
-    repeat: -1
-  });
 gsap.fromTo(
     '.profile-title',{
       y:100,
