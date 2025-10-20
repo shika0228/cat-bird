@@ -1,0 +1,135 @@
+@font-face {
+    font-family: 'JinNianYeYaoJiaYouYa';
+    src: url('fonts/JinNianYeYaoJiaYouYa-2.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'MuyaoSoftbrush';
+    src: url('fonts/Muyao-Softbrush-2.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+html, body {
+    min-width: 1280px;         /* 桌面基准宽度 */
+  }
+  @media (min-width: 1441px) {
+    html, body { overflow-x: hidden; } /* 大屏通常不需要横向滚动 */
+  }
+*{
+    scroll-behavior:smooth;
+    margin:0;
+}
+body{
+  background-color:#1a1a1a;
+  position: relative;
+}
+.nav-wrap{
+    margin-left:5%;
+    position:fixed;
+    z-index:999;
+}
+/*丸がボタンに変形する*/
+.btntransform{
+    font-size:32px;
+    font-family: 'MuyaoSoftbrush', sans-serif;
+	position: relative;
+	padding:0 0 0 15px;
+    color: #ffffff;
+    text-decoration: none;
+    outline: none;
+    display:flex;
+    align-items:center;
+}
+.btntransform:hover{
+    color: #ffffff;
+}
+/* 丸が動く */
+.btntransform::before{
+	content:'';
+	position:absolute;
+	left:0;
+	z-index: -1;
+	width:40px;
+	height:40px;
+	background:#eedabd97;
+	border-radius:25px;
+    /*アニメーションの指定*/
+    transition:.3s ease-out;
+}
+
+/*hoverした際の形状*/
+.btntransform:hover::before{
+	width:200px;
+}
+.title{
+  margin-top:5%;
+  margin-bottom:5%;
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.all-title{
+  width:192px;
+  height:52px;
+
+}
+.video{
+  margin:0 auto;
+  margin-bottom:15%;
+  width:70%;
+  height:fit-content;
+}
+.video-3{
+  width:fit-content;
+  height:90vh;
+}
+.video video{
+  width:100%;
+  height:auto;
+  border-radius: 10px;
+}
+.video-3 video{
+  width:auto;
+  height:100%;
+  border-radius: 10px;
+}
+/*-----------------footer--------------*/
+.footer{
+  width:100%;
+  height:343px;
+  background-image:url('./img/footer-bg.png');
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:cover;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+}
+.top-btn{
+  z-index:800;
+  position:absolute;
+  cursor: pointer;
+  text-decoration:none;
+  bottom:80px;
+}
+.footer-text{
+  width:100%;
+  height:30px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:absolute;
+  bottom:15%;
+}
+
+.footer-text a{
+  color:#fff;
+  margin-left:10px;
+  font-size:24px;
+  font-family: 'MuyaoSoftbrush', sans-serif;
+}

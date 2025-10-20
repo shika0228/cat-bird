@@ -1,0 +1,268 @@
+@font-face {
+    font-family: 'JinNianYeYaoJiaYouYa';
+    src: url('fonts/JinNianYeYaoJiaYouYa-2.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'MuyaoSoftbrush';
+    src: url('fonts/Muyao-Softbrush-2.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @media (min-width: 1441px) {
+    html, body { overflow-x: hidden; } /* 大屏通常不需要横向滚动 */
+  }
+*{
+    scroll-behavior:smooth;
+    margin:0;
+}
+body{
+    padding:2% 0;
+    background-color:#F7F3F0;
+    display:flex;
+    flex-direction:column;
+}
+.nav-wrap{
+    margin-top:2%;
+    margin-left:5%;
+    position:fixed;
+    z-index:999;
+}
+/*丸がボタンに変形する*/
+.btntransform{
+    font-size:32px;
+    font-family: 'MuyaoSoftbrush', sans-serif;
+	position: relative;
+	padding:0 0 0 15px;
+    color: #424242;
+    text-decoration: none;
+    outline: none;
+    display:flex;
+    align-items:center;
+}
+.btntransform:hover{
+    color: #121212;
+}
+/* 丸が動く */
+.btntransform::before{
+	content:'';
+	position:absolute;
+	left:0;
+	z-index: -1;
+	width:40px;
+	height:40px;
+	background:#EEDABD;
+	border-radius:25px;
+    /*アニメーションの指定*/
+    transition:.3s ease-out;
+}
+
+/*hoverした際の形状*/
+.btntransform:hover::before{
+	width:200px;
+}
+.title{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.all-title{
+    width:192px;
+    height:52px;
+
+}
+/*==================================================
+ギャラリーのためのcss
+===================================*/
+
+/*＝＝＝並び替えボタンのCSS*/
+.sort-btn{
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	padding:50px 20px;
+}
+
+.sort-btn li{
+	background:#f4ebde;
+list-style:none;
+font-size:16px;
+font-weight:400;
+    letter-spacing:0.2em;
+	border-radius:10px;
+	cursor: pointer;
+	padding: 10px;
+	margin:0 10px;
+}
+
+.sort-btn li.active{/*ボタンに現在地＝activeというクラス名がついたら背景色を変更*/
+	background:#f6ddb9;	
+}
+/* ===== 加载画面（整层覆盖） ===== */
+#loading-screen{
+    position:fixed; inset:0;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:18px;            /* 元素之间的间距（电池-文字-GIF） */
+    background:#f7f4ef;     /* 与示意图一致的干净底色 */
+    z-index:99999;
+    transition:opacity .8s ease;
+  }
+  
+  /* ===== 电池（小尺寸） ===== */
+  .battery-frame{
+    width:60px;          /* 更小的电池宽度 */
+    height:24px;         /* 更小的电池高度 */
+    border:3px solid #222;
+    border-radius:6px;
+    position:relative;
+    box-sizing:border-box;
+  }
+  .battery-frame::after{
+    content:"";
+    position:absolute; right:-8px; top:25%;
+    width:6px; height:50%;
+    background:#222; border-radius:1px;
+  }
+  .battery-level{
+    position:absolute; inset:0;
+    width:0%; height:100%;
+    background:#7ec66a;
+    border-radius:3px;
+    transition:width .18s ease;
+  }
+  
+  /* ===== Loading... 文字（使用 MuyaoSoftbrush） ===== */
+  .loading-text{
+    font-family: 'MuyaoSoftbrush', system-ui, sans-serif;
+    font-size:24px;            /* 比例感更贴近示意图 */
+    letter-spacing:.5px;
+    color:#222;
+    margin-top:2px;
+    user-select:none;
+  }
+  
+  /* ===== 下方图片（更大） ===== */
+  .loading-gif{
+    width:min(300px, 30vw);    /* 桌面更大，窄屏自适应 */
+    height:auto;
+    opacity:1;
+  }
+  
+  /* 加载完成淡出 */
+  #loading-screen.fade-out{
+    opacity:0; pointer-events:none;
+  }
+
+/*横幅が480px以下になった際の指定*/
+@media only screen and (max-width: 480px) {
+.sort-btn{
+	justify-content: space-between;
+  padding:20px;
+}	
+.sort-btn li{
+	width:40%;
+	margin:0 0 20px 0;
+	text-align:center;
+    font-size:18px;
+	}	
+}
+
+/*＝＝＝Muuriのレイアウトのための調整 */
+.grid {
+    width:80%;
+    margin: 0 auto;
+    position: relative; /* Muuri要求有相对定位 */
+}
+
+/*各画像の横幅などの設定*/
+.item {
+  display: block;
+  position: absolute;
+  width:30%;/*横並びで3つ表示*/
+  z-index: 1;
+  margin:10px;
+  list-style:none;
+}
+
+/*内側のボックスの高さが崩れないように維持*/
+.item-content {
+  border-radius:10px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/*画像の横幅を100%にしてレスポンシブ化*/
+.grid img{
+	width:100%;
+	height:auto;
+	vertical-align: bottom;/*画像の下にできる余白を削除*/
+}
+
+/*横幅が768px以下になった際の指定*/
+
+/*＝＝＝fancyboxサムネイル背景と画像選択時の枠線の指定*/
+.fancybox-thumbs {
+    background: transparent!important;
+}
+
+.fancybox-thumbs__list a:before {
+    border: 6px solid #FA999B;
+}
+.item-content{
+    overflow:hidden;
+    background-color:#fff;
+}
+.item-content a img{
+    transition:transform 0.2s ease-in-out;
+}
+.item-content a img:hover{
+    transform:scale(1.1);
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    html {
+      zoom: 1; /* 保持原始比例显示 */
+    }
+  }
+@media only screen and (max-width: 500px) {
+    .btntransform{
+        font-size:24px;
+        padding:0 0 0 15px;
+    }
+    .btntransform::before{
+        width:32px;
+        height:32px;
+        border-radius:25px;
+    }
+    .btntransform:hover::before{
+        width:200px;
+    } 
+    .all-title{
+     width:150px;
+     height:auto;
+     margin-top:20%;
+     margin-bottom:5%;
+    }  
+    .grid {
+        width:90%;
+    }
+    .item {
+      width:43%;
+      z-index: 1;
+      margin:10px;
+    }
+/* ===== 加载画面（整层覆盖） ===== */
+/* ===== Loading... 文字（使用 MuyaoSoftbrush） ===== */
+.loading-text{
+  font-size:18px;  
+  margin-top:10px;  
+  margin-bottom:20px;        /* 比例感更贴近示意图 */
+}
+.loading-gif{
+  scale:2;   /* 桌面更大，窄屏自适应 */
+}
+
+}

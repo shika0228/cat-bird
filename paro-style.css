@@ -1,0 +1,468 @@
+@font-face {
+    font-family: 'JinNianYeYaoJiaYouYa';
+    src: url('fonts/JinNianYeYaoJiaYouYa-2.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'MuyaoSoftbrush';
+    src: url('fonts/Muyao-Softbrush-2.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+*{
+  scroll-behavior: smooth;
+  margin:0;
+  padding:0;
+}
+body{
+    display:flex;
+}
+.left-box-wrap{
+    position:fixed;
+    width:239px;
+    height:100vh;
+    background-color:#f0e6d9;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.nav-wrap{
+    position:absolute;
+    z-index:999;
+    top:2%;
+    left:5%;
+}
+/*丸がボタンに変形する*/
+.btntransform{
+    font-size:24px;
+    font-family: 'MuyaoSoftbrush', sans-serif;
+	position: relative;
+	padding:0 0 0 15px;
+    color: #424242;
+    text-decoration: none;
+    outline: none;
+    display:flex;
+    align-items:center;
+}
+.btntransform:hover{
+    color: #121212;
+}
+/* 丸が動く */
+.btntransform::before{
+	content:'';
+	position:absolute;
+	left:0;
+	z-index: -1;
+	width:32px;
+	height:32px;
+	background:#EEDABD;
+	border-radius:25px;
+    /*アニメーションの指定*/
+    transition:.3s ease-out;
+}
+
+/*hoverした際の形状*/
+.btntransform:hover::before{
+	width:140px;
+}
+.navi-title{
+    margin:32px 0;
+}
+.nav-box-wrap{
+    height:fit-content;
+    width:90%;
+    padding:0;
+}
+.navi-box{
+    height:45px;
+    width:230px;
+    border-top:1px solid #EEB76A;
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+}
+.navi-box:hover{
+    background-color:#EEB76A;
+}
+.navi-box a{
+    text-decoration:none;
+    font-family: 'MuyaoSoftbrush', sans-serif;
+    font-size:18px;
+    color:#121212;
+    cursor: pointer;
+    display:flex;
+    justify-content:flex-start;
+    padding:0 45px;
+}
+#navi-box-13{
+    border-bottom:1px solid #EEB76A;;
+}
+/*----------paro-box------------*/
+.right-box-wrap{
+    width:calc(100% - 239px);
+    height:fit-content;
+    margin-left:239px;
+    background-image:url('./paro-img/paro-bg.png');
+    background-size:contain;
+}
+.paro-box{
+    height:fit-content;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    background-position:center;
+    background-size:cover;
+    background-repeat:no-repeat;
+    
+}
+#paro-1{
+    background-image:url('./paro-img/paro-1-bg.png');
+}
+#paro-2{
+    background-image:url('./paro-img/paro-2-bg.png');
+}
+#paro-3{
+    background-image:url('./paro-img/paro-3-bg.png');
+}
+#paro-4{
+    background-image:url('./paro-img/paro-4-bg.png');
+}
+#paro-5{
+    background-image:url('./paro-img/paro-5-bg.png');
+}
+#paro-6{
+    background-image:url('./paro-img/paro-6-bg.png');
+}
+#paro-7{
+    background-image:url('./paro-img/paro-7-bg.png');
+}
+#paro-8{
+    background-image:url('./paro-img/paro-8-bg.png');
+}
+#paro-9{
+    background-image:url('./paro-img/paro-9-bg.png');
+}
+#paro-10{
+    background-image:url('./paro-img/paro-10-bg.png');
+}
+#paro-12{
+    background-image:url('./paro-img/paro-12-bg.png');
+}
+#paro-13{
+    background-image:url('./paro-img/paro-13-bg.png');
+}
+.box-title{
+    margin:3% 0;
+}
+.text-box-wrap{
+    width:90%;
+    height:fit-content;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;}
+.text-box-wrap-special{
+    width:70%;
+    height:fit-content;
+    display:flex;
+    justify-content:center;
+    align-items:center;}
+ #text-box-wrap-2{
+        align-items:center;
+    }
+#text-box-wrap-6{
+        align-items:center;
+        justify-content:center;
+    }
+#text-box-wrap-3{
+        justify-content:center;
+        height:302px;
+        padding-right:20px;
+    }
+#text-short-9{
+    width:50%;
+ }
+.text-short{
+    width:48%;
+}
+.text-short-special{
+    width:70%;
+}
+.text-long{
+    overflow-y: auto; 
+    overflow-x: hidden; 
+    width:100%;
+    height:357px;
+    margin-left:20px;
+    border:none;
+    background-color:#ffffff68;
+    padding:20px;
+}
+.gallery-box{
+    margin-top:5%;
+    margin-bottom:10%;
+    width:90%;
+    height:fit-content;
+}
+.video-wrap{
+    width:50%;
+    height:fit-content;
+    margin-left:20px;
+    border:none;
+}
+.video-wrap video{
+    width:100%;
+    height:auto;
+}
+.video-wrap2{
+    width:50%;
+    height:fit-content;
+    margin-left:20px;
+    border:none;
+}
+.video-wrap2 video{
+    width:100%;
+    height:auto;
+}
+.video-wrap3{
+    width:40%;
+    height:fit-content;
+    border:none;
+    
+}
+.video-wrap3 video{
+    width:100%;
+    height:fit-content;
+    margin-left:-20px;
+}
+
+/*==================================================
+ギャラリーのためのcss
+===================================*/
+.gallery{
+    columns: 4;/*段組みの数*/
+    padding:0 15px;/*ギャラリー左右に余白をつける*/
+    margin:0;
+    }
+    
+    .gallery li {
+    margin-bottom: 20px;/*各画像下に余白をつける*/
+    list-style:none;
+    overflow:hidden;
+    }
+    /*ギャラリー内のイメージは横幅100%にする*/
+    .gallery img{
+        width:100%;
+        height:auto;
+        transition:transform 0.2s ease-in-out;
+        vertical-align: bottom;/*画像の下にできる余白を削除*/}
+    .gallery img:hover{
+        transform:scale(1.1);
+    }
+             
+    /*　横幅900px以下の段組み設定　*/
+    @media only screen and (max-width: 900px) {
+        .gallery{
+        columns:3;
+        }	
+    }
+    
+    @media only screen and (max-width: 768px) {
+        .gallery{
+        columns: 2;
+        }	
+    }
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+        html {
+          zoom: 1; /* 保持原始比例显示 */
+        }
+      }    
+@media only screen and (max-width: 500px) {
+
+    body{
+        display:flex;
+        flex-direction:column;
+    }
+    .box-title{
+        height:40px;
+        margin-top:30px;
+    }
+    .text-box-wrap{
+        display:flex;
+        margin:0;
+        padding:0;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        height:fit-content;
+    }
+
+    .text-short{
+        width:80%;
+        margin-bottom:30px;
+        padding-right:20px;
+    }
+    .text-short-special{
+        height:fit-content;
+        margin:0;
+        width:90%;
+        padding:0;
+    }
+    #text-box-wrap-3{
+        justify-content:center;
+        height:fit-content;
+        padding-right:20px;
+    }
+    .text-long{
+        height:40vh;
+        margin:0;
+    }
+    .left-box-wrap{
+        position:fixed;
+        width:100%;
+        height:100vh;
+        background-color:#f0e6d9;
+    }
+    .right-box-wrap{
+        width:100%;
+        margin-left:0;
+    }
+    .video-wrap{
+        width:80%;
+        margin:0;
+    }
+    .video-wrap2{
+        width:80%;
+        margin:0;
+    }
+    .video-wrap3{
+        width:80%;
+    }
+    .video-wrap3 video{
+        margin-left:0;
+    }
+    .btntransform{
+        top:8%;
+        left:30%;
+        position:absolute;
+        z-index:999;
+        font-size:24px;
+        padding:0 0 0 15px;
+    }
+    .nav-wrap{
+        width:80%;
+        top:10%;
+    }
+    .btntransform::before{
+        width:32px;
+        height:32px;
+        border-radius:25px;
+    }
+    .btntransform:hover::before{
+        width:200px;
+    } 
+    .navi-title{
+     display:none;
+    }
+    .navi-box-wrap{
+        margin-top:8%;
+        display: grid;
+        gap:20px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .navi-box{
+        height:30px;
+        width:100%;
+        border:1px solid #EEB76A;
+        background-color: #f6cc90;
+        border-radius:5px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+    }
+    .navi-box a{
+        font-size:18px;
+        width:100%;
+        display:flex;
+        align-items:center;
+        padding:10px;
+    }
+    #navi-box-13{
+        border-bottom:1px solid #EEB76A;;
+    }
+
+}
+/* 默认：桌面端隐藏两个按钮 */
+.open-nav-btn,
+.close-nav-btn { display: none; }
+
+@media only screen and (max-width: 500px) {
+  /* 两个按钮通用样式（位置与款式完全一致） */
+  .open-nav-btn,
+  .close-nav-btn {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    width:32px;
+    height:32px;
+    border-radius: 50%;
+    background: #f6cc90;
+    border: 2px solid #eeb76a;
+    display: flex;               /* 手机下默认显示打开按钮 */
+    align-items: center;
+    justify-content: center;
+    font-size:24px;
+    font-weight:600;
+    color: #424242;
+    z-index: 10010;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* 关闭按钮默认不显示，仅在 nav-open 时显示 */
+  .close-nav-btn { display: none; }
+
+  /* 面板默认收起 */
+  .left-box-wrap {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height:600px;
+    background-color: #f0e6d9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform .35s ease, opacity .35s ease;
+  }
+
+  /* —— 用 body.nav-open 统一切换 —— */
+  body.nav-open .left-box-wrap {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  body.nav-open .open-nav-btn { display: none; }   /* 打开后隐藏“☰” */
+  body.nav-open .close-nav-btn { display: flex; }  /* 打开后显示“×” */
+  
+}
+@media only screen and (max-height:700px){
+    .left-box-wrap{
+overflow-y: scroll;
+    }  
+    .navi-title{
+        display:none;
+    }
+
+}
+
+

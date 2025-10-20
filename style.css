@@ -1,0 +1,1090 @@
+@font-face {
+    font-family: 'JinNianYeYaoJiaYouYa';
+    src: url('fonts/JinNianYeYaoJiaYouYa-2.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'MuyaoSoftbrush';
+    src: url('fonts/Muyao-Softbrush-2.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+html, body {
+    min-width: 1280px;         /* 桌面基准宽度 */
+  }
+@media (min-width: 1441px) {
+    html, body { overflow-x: hidden; } /* 大屏通常不需要横向滚动 */
+  }
+*{
+  scroll-behavior: smooth;
+  margin:0;
+  padding:0;
+}
+/* 汉堡按钮：默认隐藏，等滚到 .profile 再显示 */
+.hamburger{
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: none;           /* 滚动到 .profile 再显示 */
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    background: #ffffffcc;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.12);
+    z-index: 10000;
+    cursor: pointer;
+  }
+  .hamburger span{
+    display: block;
+    width: 22px;
+    height: 2px;
+    margin: 0 auto;
+    background: #333;
+    transition: transform .25s ease, opacity .25s ease;
+  }
+  /* 打开时的“X”形态 */
+  .hamburger.active span:nth-child(1){ transform: translateY(8px) rotate(45deg); }
+  .hamburger.active span:nth-child(2){ opacity: 0; }
+  .hamburger.active span:nth-child(3){ transform: translateY(-8px) rotate(-45deg); }
+  
+  /* 打开菜单时：复用你已有的 .nav-wrap，但改为固定在左上角并显示 */
+  body.nav-open .nav-wrap{
+    position: fixed;     /* 覆盖原来在 .top 内的 absolute */
+    top: 64px;
+    left: 16px;
+    z-index: 9999;
+    display: flex;       /* 保持原 flex 布局 */
+    padding: 12px 16px;
+    background: #ffffff8f;
+    border-radius: 12px;
+    box-shadow: 0 8px 28px rgba(0,0,0,.18);
+  }
+  
+  /* 关闭时（默认）隐藏菜单：只在 nav-open 时显示 */
+  .nav-wrap{
+    display: none;       /* 默认不显示（顶部区域原本可见，如需保留可删此行） */
+  }
+  
+  /* 也给按钮一个显示控制的类（由 JS/ScrollTrigger 切换） */
+  .hamburger.show{ display: flex; }
+  
+/*-------------top---------------*/
+.top{
+    overflow:hidden;
+    position:relative;
+    width:100%;
+    height:860px;
+    background-image:url('./img/top-bg.jpg');
+    background-position:center;
+    background-size:cover;
+    background-repeat:no-repeat;
+}
+.top-bg-paper{
+    z-index:1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width:67%;
+    height:auto;
+}
+.logo{
+    width:10%;
+    height:auto;
+    z-index:1;
+    position:absolute;
+    top:5%;
+    left:5%;
+}
+.nav-wrap{
+    z-index:999;
+    position:absolute;
+    top:23%;
+    left:5%;
+    height:fit-content;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    padding:0;
+    height:188px;
+}
+/*丸がボタンに変形する*/
+.btntransform{
+    font-size:24px;
+    font-family: 'MuyaoSoftbrush', sans-serif;
+	position: relative;
+	padding:0 0 0 15px;
+    color: #424242;
+    text-decoration: none;
+    outline: none;
+    display:flex;
+    align-items:center;
+}
+.btntransform:hover{
+    color: #121212;
+}
+/* 丸が動く */
+.btntransform::before{
+	content:'';
+	position:absolute;
+	left:0;
+	z-index: -1;
+	width:32px;
+	height:32px;
+	background:#EEDABD;
+	border-radius:25px;
+    /*アニメーションの指定*/
+    transition:.3s ease-out;
+}
+
+/*hoverした際の形状*/
+.btntransform:hover::before{
+	width:122px;
+}
+/*-------------top stamp---------------*/
+#top-stamp-2{
+    z-index:3;
+    position:absolute;
+    width:25.6%;
+    height:auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#top-stamp-1{
+    z-index:2;
+    position:absolute;
+    width:10%;
+    height:auto;
+    top:5%;
+    left:58%;
+    
+}
+#top-stamp-3{
+    z-index:4;
+    position:absolute;
+    width:21%;
+    height:auto;
+    top:3%;
+    left:25%;
+}
+#top-stamp-4{
+    z-index:4;
+    position:absolute;
+    width:19%;
+    height:auto;
+    top:35%;
+    left:23%;
+}
+#top-stamp-5{
+    z-index:4;
+    position:absolute;
+    width:13.4%;
+    height:auto;
+    top:40%;
+    left:60%;
+}
+#top-stamp-6{
+    z-index:7;
+    position:absolute;
+    width:13.4%;
+    height:auto;
+    top:21%;
+    left:67%;
+}
+#top-stamp-7{
+    z-index:4;
+    position:absolute;
+    width:35%;
+    height:auto;
+    top:50%;
+    left:50%;
+}
+#top-stamp-8{
+    z-index:4;
+    position:absolute;
+    width:22.7%;
+    height:auto;
+    top:45%;
+    left:15%;
+}
+#top-stamp-9{
+    z-index:3;
+    position:absolute;
+    width:12.5%;
+    height:auto;
+    top:20%;
+    left:57.5%;
+}
+#top-stamp-10{
+    z-index:5;
+    position:absolute;
+    width:7.7%;
+    height:auto;
+    top:25%;
+    left:18%;
+}
+#top-stamp-11{
+    z-index:5;
+    position:absolute;
+    width:14.2%;
+    height:auto;
+    top:3%;
+    left:45%;
+}
+#top-stamp-12{
+    z-index:5;
+    position:absolute;
+    width:5.5%;
+    height:auto;
+    top:47%;
+    left:80%;
+}
+#top-stamp-13{
+    z-index:5;
+    position:absolute;
+    width:11.4%;
+    height:auto;
+    top:28%;
+    left:76%;
+}
+/*-------------roll-stamp---------------*/
+/* 让容器保持不动、裁切超出部分 —— 你已有宽高与 overflow，可保留 */
+.roll-stamp{
+    width:100%;
+    height:67px;
+    background-color:#EEE1EF;
+    overflow:hidden;
+  }
+  
+  /* 跑马灯轨道：宽度由内容决定，水平排布 */
+  .roll-stamp .marquee{
+    display:flex;
+    width:max-content;          /* 关键：让内容“有多宽占多宽” */
+    will-change: transform;
+    animation: roll-left 30s linear infinite; /* 调速：改 20s 越大越慢 */
+  }
+  
+  /* 两组内容并排 */
+  .roll-stamp .marquee__group{
+    display:flex;
+  }
+  
+  /* 图片紧贴排列，无收缩、无缝拼接 */
+  .roll-stamp img{
+    height:67px;
+    display:block;  /* 去掉行内基线间隙 */
+    flex:0 0 auto;  /* 禁止收缩，保持等比宽度 */
+  }
+  
+  /* 关键动画：把两组合并视为“整体”，从 0 滑到 -50%（正好移动一组宽度） */
+  @keyframes roll-left{
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  
+  /* 可选：悬停暂停（需要的话解除注释）
+  .roll-stamp:hover .marquee{
+    animation-play-state: paused;
+  } */
+  
+/*---------------profile--------------*/
+.profile{
+    width:100%;
+    height:1300px;
+    background-image:url('./img/profile-bg.png');
+    background-position:center;
+    background-size:cover;
+    background-repeat:no-repeat;
+    display:flex;
+    flex-direction:column;
+    position: relative; 
+    padding-bottom:10%;
+    
+}
+.profile-title{
+    width:192px;
+    height:52px;
+    margin:0 auto;
+    margin-top:5%;
+}
+.profile-1{
+    width:32.5%;
+    height:auto;
+    position:absolute;
+    z-index:1;
+    margin-top:10%;
+    margin-left:30%;
+}
+.profile-2{
+    position:absolute;
+    z-index:2;
+    width:31.1%;
+    height:auto;
+    position:absolute;
+    margin-top:55%;
+    margin-left:40%;
+}
+.profile-1-img{
+    position:absolute;
+    z-index:3;
+    margin-top:13%;
+    margin-left:5%;
+    width:36%;
+    height:654.23px;
+    background-image:url('./img/profile-1-img.png');
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:contain;
+    cursor: pointer;
+    transition:background-image 0.3s ease-in-out;
+}
+.profile-1-img:hover{
+    background-image:url('./img/profile-img-1-after.png');
+}
+.profile-2-img{
+    position:absolute;
+    z-index:1;
+    margin-top:30%;
+    margin-left:59%;
+    width:37.1%;
+    height:652.74px;
+    background-image:url('./img/profile-2-img.png');
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:contain;
+    cursor: pointer;
+    transition:background-image 0.3s ease-in-out;
+}
+.profile-2-img:hover{
+    background-image:url('./img/profile-2-after.png');
+}
+.profile-bottom {
+    position: absolute;   /* 让它相对父元素定位 */
+    bottom: 0;            /* 紧贴底部 */
+    left: 0;
+    width: 100%;
+    height: 81px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+.profile-bottom img{
+    height:100%;
+    width:auto;
+}  
+/*---------------paro--------------*/
+.paro{
+    position: relative;
+    width:100%;
+    height:fit-content;
+    display:flex;
+    align-items:center;
+    overflow:visible;
+}
+.paro-bg{
+    width:100%;
+    height:auto;
+    z-index:1;
+    bottom:0;
+}
+.paro-title{
+    z-index:3;
+    position:absolute;
+    margin-bottom:55%;
+    margin-left:8%;
+    margin-top:5%;
+    width:230px;
+    height:110.48px;
+}
+.paro-page-btn{
+    text-decoration:none;
+    z-index:3;
+    position:absolute;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor: pointer;
+    margin-top:50%;
+    margin-left:42%;
+}
+.paro-page-btn:hover img{
+    transform:scale(0.9);
+}
+.paro-page-btn img{
+    transition:transform 0.2s ease-in-out;
+}
+.paro-navi{
+    z-index:999;
+    position:absolute;
+    width:93.89px;
+    height:504.42px;
+    margin-left:18%;
+    display:flex;
+    align-items:center;
+    flex-direction:column;
+    overflow:hidden;
+    padding:0;
+}
+.paro-navi a{
+    opacity:0.7;
+    margin:15px 0;
+    cursor: pointer;
+    width:75.112px;
+    height:75.112px;
+    flex-shrink: 0; /* 新增此行 */
+    background-color:#fff;
+    background-position:center;
+    background-size:cover;
+    background-repeat:no-repeat;
+    transition:transform 0.2s ease-in-out;
+}
+.paro-navi a:hover{
+    transform:scale(1.1);
+}
+#paro-navi-1{
+    background-image:url('./img/paro-navi-1.png');
+}
+#paro-navi-2{
+    background-image:url('./img/paro-navi-2.png');
+}
+#paro-navi-3{
+    background-image:url('./img/paro-navi-3.png');
+}
+#paro-navi-4{
+    background-image:url('./img/paro-navi-4.png');
+}
+#paro-navi-5{
+    background-image:url('./img/paro-navi-5.png');
+}
+#paro-navi-6{
+    background-image:url('./img/paro-navi-6.png');
+}
+#paro-navi-7{
+    background-image:url('./img/paro-navi-7.png');
+}
+#paro-navi-8{
+    background-image:url('./img/paro-navi-8.png');
+}
+#paro-navi-9{
+    background-image:url('./img/paro-navi-9.png');
+}
+#paro-navi-10{
+    background-image:url('./img/paro-navi-10.png');
+}
+#paro-navi-11{
+    background-image:url('./img/paro-navi-11.png');
+}
+#paro-navi-12{
+    background-image:url('./img/paro-navi-12.png');
+}
+#paro-navi-13{
+    background-image:url('./img/paro-navi-13.png');
+}
+.paro-wrap{
+    z-index:3;
+    position:absolute;
+    width:759px;
+    height:576px;
+    background-position:center;
+    background-size:contain;
+    background-repeat:no-repeat;
+    margin-left:30%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:0;
+}
+.paro-box{
+    width:100%;
+    height:100%;
+    position:absolute;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:contain;
+}
+#paro-box-1{
+    z-index:1;
+    background-image:url('./img/paro-box-1.png');
+}
+#paro-box-2{
+    z-index:2;
+    background-image:url('./img/paro-box-2.png');
+}
+#paro-box-3{
+    z-index:3;
+    background-image:url('./img/paro-box-3.png');
+}
+#paro-box-4{
+    z-index:4;
+    background-image:url('./img/paro-box-4.png');
+}
+#paro-box-5{
+    z-index:5;
+    background-image:url('./img/paro-box-5.png');
+}
+#paro-box-6{
+    z-index:6;
+    background-image:url('./img/paro-box-6.png');
+}
+#paro-box-7{
+    z-index:7;
+    background-image:url('./img/paro-box-7.png');
+}
+#paro-box-8{
+    z-index:8;
+    background-image:url('./img/paro-box-8.png');
+}
+#paro-box-9{
+    z-index:9;
+    background-image:url('./img/paro-box-9.png');
+}
+#paro-box-10{
+    z-index:10;
+    background-image:url('./img/paro-box-10.png');
+}
+#paro-box-11{
+    z-index:11;
+    background-image:url('./img/paro-box-11.png');
+}
+#paro-box-12{
+    z-index:12;
+    background-image:url('./img/paro-box-12.png');
+}
+#paro-box-13{
+    z-index:13;
+    background-image:url('./img/paro-box-13.png');
+}
+/*---------------gallery--------------*/
+.gallery{
+    width:100%;
+    height:fit-content;
+    display:flex;
+    flex-direction:column;
+    background-color:#F7F3F0;
+    padding:0;
+    margin:0;
+    overflow:hidden;
+    align-items:center;
+}
+.gallery-title{
+    width:226px;
+    height:99px;
+    margin:0 auto;
+    margin-top:5%;
+}
+/* 保持你原本的 .light 样式 */
+.light{
+    padding:0;
+    width:184.96px;
+    height:440px;
+    background-image:url('./img/light-before.svg');
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:contain;
+    position:absolute;
+    z-index:2;
+    margin-left:80%;
+    cursor:pointer;
+  }
+  
+  /* “点亮后”的持久状态（用类名控制，不用 :active） */
+  .light.on{
+    background-image:url('./img/light-after.svg');
+  }
+  /* 画廊变暗的状态（配合 JS 切换） */
+  .gallery.gallery--dark{
+    background-color:#131313;
+  }
+.video-wrap{
+    position:relative;
+    z-index:2;
+    width:80%;
+    height:fit-content;
+    margin-top:5%;
+    border:10px solid #333;
+    border-radius:3px;
+}
+.video-wrap video{
+    width:100%;
+    height:auto;
+}
+.gallery-box{
+    z-index:2;
+    position:relative;
+    margin-top:5%;
+    width:80%;
+    display:flex;
+    align-items:center;
+}
+
+#gallery-box-1{
+    height:364px;
+    justify-content:space-between;
+}
+#gallery-box-1 img{
+    height:100%;
+    width:auto;
+    border-radius:3px;
+}
+#gallery-box-2 {
+    justify-content:center;
+}
+#gallery-box-2 img{
+    height:auto;
+    width:100%;
+    border-radius:3px;
+}
+#gallery-box-3{
+    height:318px;
+    justify-content:space-between;
+}
+#gallery-box-3 img{
+    height:100%;
+    width:auto;
+    border-radius:3px;
+}
+.gallery-button-wrap{
+    width:100%;
+    height:64px;
+    margin-top:8%;
+    margin-bottom:8%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.gallery-button-wrap a{
+    text-decoration:none;
+    cursor:pointer;
+    margin:0 16px;
+}
+.gallery-button-wrap a img{
+    width:285px;
+    height:64px;
+    transition:transform 0.2s ease-in-out;
+}
+.gallery-button-wrap a img:hover{
+    transform:scale(0.9);
+}
+
+
+/* 让 .paro-navi 的滚动更平滑 */
+.paro-navi {
+    /* ... 你的现有样式 ... */
+    scroll-behavior: smooth;
+}
+
+/* 箭头按钮的通用样式 */
+.paro-nav-arrow {
+    position: absolute;
+    z-index: 1000; /* 确保在导航栏之上 */
+    width: 0;
+    height: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    
+    /* 水平对齐：与 .paro-navi 的左边距和宽度有关 */
+    /* margin-left (18%) + width (93.89px / 2) */
+    left: calc(18% + 46.95px); 
+    transform: translateX(-50%); /* 水平居中 */
+}
+
+.paro-nav-arrow:hover {
+    transform: translateX(-50%) scale(1.2); /* 悬停时放大，同时保持居中 */
+}
+
+/* 上箭头按钮 */
+#paro-nav-up {
+    /* 定位到 .paro-navi 的上方。
+       你需要根据 .paro-navi 的实际垂直位置微调 top 的值。
+       可以先从一个大概的值开始，然后在浏览器开发者工具里调整。
+    */
+    top:24%; /* <--- 可能需要微调这个值 */
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 20px solid #EEB76A; /* 三角形颜色 */
+    border-radius:3px;
+}
+
+/* 下箭头按钮 */
+#paro-nav-down {
+    /* 定位到 .paro-navi 的下方。
+       同样，可能需要微调 top 值。
+    */
+    border-radius:3px;
+    top:74%; /* <--- 可能需要微调这个值 */
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 20px solid #EEB76A; /* 三角形颜色 */
+}
+.paro-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    opacity: 0;
+    transition: none; /* 禁止浏览器自身动画，交由 GSAP 控制 */
+  }
+
+  .paro-navi a.active {
+    transform: scale(1.12);
+    opacity:1;
+    width:93.89px;
+    height:93.89px;
+    transition: transform 0.3s ease;
+  }
+/*-----------------footer--------------*/
+.footer{
+    width:100%;
+    height:343px;
+    background-image:url('./img/footer-bg.png');
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:cover;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+}
+.top-btn{
+    z-index:800;
+    position:absolute;
+    cursor: pointer;
+    text-decoration:none;
+    bottom:80px;
+}
+.footer-text{
+    width:100%;
+    height:30px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:absolute;
+    bottom:15%;
+}
+.footer-text a{
+
+    margin-left:10px;
+    font-size:24px;
+    font-family: 'MuyaoSoftbrush', sans-serif;
+}
+/* ===== 加载画面（整层覆盖） ===== */
+#loading-screen{
+    position:fixed; inset:0;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:18px;            /* 元素之间的间距（电池-文字-GIF） */
+    background:#f7f4ef;     /* 与示意图一致的干净底色 */
+    z-index:99999;
+    transition:opacity .8s ease;
+  }
+  
+  /* ===== 电池（小尺寸） ===== */
+  .battery-frame{
+    width:60px;          /* 更小的电池宽度 */
+    height:24px;         /* 更小的电池高度 */
+    border:3px solid #222;
+    border-radius:6px;
+    position:relative;
+    box-sizing:border-box;
+  }
+  .battery-frame::after{
+    content:"";
+    position:absolute; right:-8px; top:25%;
+    width:6px; height:50%;
+    background:#222; border-radius:1px;
+  }
+  .battery-level{
+    position:absolute; inset:0;
+    width:0%; height:100%;
+    background:#7ec66a;
+    border-radius:3px;
+    transition:width .18s ease;
+  }
+  
+  /* ===== Loading... 文字（使用 MuyaoSoftbrush） ===== */
+  .loading-text{
+    font-family: 'MuyaoSoftbrush', system-ui, sans-serif;
+    font-size:24px;            /* 比例感更贴近示意图 */
+    letter-spacing:.5px;
+    color:#222;
+    margin-top:2px;
+    user-select:none;
+  }
+  
+  /* ===== 下方图片（更大） ===== */
+  .loading-gif{
+    width:min(300px, 30vw);    /* 桌面更大，窄屏自适应 */
+    height:auto;
+    opacity:1;
+  }
+  
+  /* 加载完成淡出 */
+  #loading-screen.fade-out{
+    opacity:0; pointer-events:none;
+  }
+  
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    html {
+      zoom: 1; /* 保持原始比例显示 */
+    }
+  }
+@media screen and (min-width: 1441px) {
+    .top{
+        height:1200px;
+    }
+    .profile{
+        height:1600px;
+    }
+    .profile-1-img{
+        width:45%;
+        height:750px;
+        margin-left:3%;
+    }
+    .profile-2-img{
+        margin-left:53%;
+        width:45.1%;
+        height:750px;
+    }
+    .paro-navi{
+        width:110px;
+        height:650px;
+        margin-left:20%;
+    }
+    .paro-navi a{
+        width:100px;
+        height:100px;}
+.paro-wrap{
+    height:650px;
+    width:856.51px;
+}
+.paro-nav-arrow {
+    left: calc(20% + 50px); 
+}
+#gallery-box-1{
+    height:500px;
+}
+#gallery-box-3{
+    height:450px;
+}
+}
+
+@media only screen and (max-width: 500px) {
+    .hamburger{
+        top: 70px;
+        left: 70px;
+        width:120px;
+        height:120px;
+        gap:15px;
+        background: #ffffffcc;
+        border:10px;
+      }
+      .hamburger span{
+        display: block;
+        width:80px;
+        height:5px;
+      }
+      /* 打开时的“X”形态 */
+      .hamburger.active span:nth-child(1){ transform: translateY(20px) rotate(45deg); }
+      .hamburger.active span:nth-child(2){ opacity: 0; }
+      .hamburger.active span:nth-child(3){ transform: translateY(-20px) rotate(-45deg); }
+      
+      /* 打开菜单时：复用你已有的 .nav-wrap，但改为固定在左上角并显示 */
+      body.nav-open .nav-wrap{
+        top:200px;
+        left:60px;
+        padding: 20px 50px;
+      }
+/*-----------top——————————————*/
+   .top{
+        height:2400px;
+    }
+    .logo{
+        width:25%;
+    }
+    .nav-wrap{
+        top:16%;
+        height:390px;
+    }
+    /*丸がボタンに変形する*/
+    .btntransform{
+        font-size:62px;
+    }
+    .btntransform::before{
+        width:68px;
+        height:68px;
+        border-radius:50px;
+    }
+    .btntransform:hover::before{
+        width:260px;
+    } 
+    #top-stamp-2{
+        width:65%;
+    }
+    #top-stamp-1{
+        width:26%;
+        top:12%;
+        left:64%;
+    }
+    #top-stamp-3{
+        width:30%;
+        top:13%;
+        left:30%;
+    }
+    #top-stamp-4{
+        width:30%;
+        top:42%;
+        left:10%;
+    }
+    #top-stamp-5{
+        width:25%;
+        top:53%;
+        left:74%;
+    }
+    #top-stamp-6{
+        width:25%;
+        top:36%;
+        left:70%;
+    }
+    #top-stamp-7{
+        width:60%;
+        top:70%;
+        left:30%;
+    }
+    #top-stamp-8{
+        width:40%;
+        top:55%;
+        left:3%;
+    } 
+    #top-stamp-9{
+        width:26%;
+        top:22%;
+        left:65%;
+    } 
+    #top-stamp-13,#top-stamp-10,#top-stamp-11,#top-stamp-12{
+display:none;
+    } 
+/*------------profile------------*/
+    .profile{
+        height:2400px;
+    }
+    .profile-1{
+        width:50%;
+        margin-top:20%;
+        margin-left:40%;
+    }
+    .profile-2{
+        width:51.1%;
+        margin-top:133%;
+        margin-left:5%;
+    }
+    .profile-1-img{
+        margin-top:23%;
+        margin-left:2%;
+        width:55%;
+        height:1000px;
+    }
+    .profile-2-img{
+        margin-top:100%;
+        margin-left:40%;
+        width:57.1%;
+        height:1000px;
+    }
+    .profile-bottom {
+        position: absolute;   /* 让它相对父元素定位 */
+        bottom: 0;            /* 紧贴底部 */
+        left: 0;
+        width: 100%;
+        height: 81px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+      }
+    .profile-bottom img{
+        height:100%;
+        width:auto;
+    }  
+/*-------------paro-------------*/
+.paro{
+    flex-direction:row-reverse;
+}
+.paro-title{
+    margin-right:5%;
+    margin-top:1%;
+    margin-bottom:65%;
+}
+.paro-page-btn{
+    scale:1.8;
+    margin-top:55%;
+    margin-right:44%;
+}
+.paro-navi{
+    width:200px;
+    height:700px;
+    margin-right:8%;
+}
+.paro-navi a{
+    width:150px;
+    height:150px;
+    margin:20px 0;
+}
+.paro-navi a.active {
+    transform: scale(1.12);
+
+    width:150px;
+    height:150px;
+  }
+  .paro-nav-arrow{
+    display:none;
+  }
+  .paro-wrap{
+    margin-bottom:10%;
+    margin-right:30%;
+    scale:1.1;
+  }
+  .gallery-button-wrap{
+scale:1.3;
+margin-bottom:20%;
+}
+.gallery-button-wrap a{
+    margin:0 50px;
+}
+.gallery-button-wrap a img{
+    scale:1.3;
+}
+/* ===== 加载画面（整层覆盖） ===== */
+#loading-screen{
+    position:fixed; inset:0;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:18px;            /* 元素之间的间距（电池-文字-GIF） */
+    background:#f7f4ef;     /* 与示意图一致的干净底色 */
+    z-index:99999;
+    transition:opacity .8s ease;
+  }
+  
+  /* ===== 电池（小尺寸） ===== */
+  .battery-frame{
+scale:4;
+  }
+  /* ===== Loading... 文字（使用 MuyaoSoftbrush） ===== */
+  .loading-text{
+    font-size:64px;  
+    margin-top:100px;  
+    margin-bottom:260px;        /* 比例感更贴近示意图 */
+  }
+  .loading-gif{
+    scale:8;   /* 桌面更大，窄屏自适应 */
+  }
+  
+}
