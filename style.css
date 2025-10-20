@@ -11,17 +11,65 @@
     font-weight: normal;
     font-style: normal;
   }
-html, body {
-    min-width: 1280px;         /* 桌面基准宽度 */
-  }
-@media (min-width: 1441px) {
-    html, body { overflow-x: hidden; } /* 大屏通常不需要横向滚动 */
-  }
 *{
   scroll-behavior: smooth;
   margin:0;
   padding:0;
 }
+/* ===== 加载画面（整层覆盖） ===== */
+#loading-screen{
+    position:fixed; inset:0;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:18px;            /* 元素之间的间距（电池-文字-GIF） */
+    background:#f7f4ef;     /* 与示意图一致的干净底色 */
+    z-index:99999;
+    transition:opacity .8s ease;
+  }
+  
+  /* ===== 电池（小尺寸） ===== */
+  .battery-frame{
+    width:60px;          /* 更小的电池宽度 */
+    height:24px;         /* 更小的电池高度 */
+    border:3px solid #222;
+    border-radius:6px;
+    position:relative;
+    box-sizing:border-box;
+  }
+  .battery-frame::after{
+    content:"";
+    position:absolute; right:-8px; top:25%;
+    width:6px; height:50%;
+    background:#222; border-radius:1px;
+  }
+  .battery-level{
+    position:absolute; inset:0;
+    width:0%; height:100%;
+    background:#7ec66a;
+    border-radius:3px;
+    transition:width .18s ease;
+  }
+  
+  /* ===== Loading... 文字（使用 MuyaoSoftbrush） ===== */
+  .loading-text{
+    font-family: 'MuyaoSoftbrush', system-ui, sans-serif;
+    font-size:24px;            /* 比例感更贴近示意图 */
+    letter-spacing:.5px;
+    color:#222;
+    margin-top:2px;
+    user-select:none;
+  }
+  
+  /* ===== 下方图片（更大） ===== */
+  .loading-gif{
+    width:min(300px, 30vw);    /* 桌面更大，窄屏自适应 */
+    height:auto;
+    opacity:1;
+  }
+  
+  /* 加载完成淡出 */
+  #loading-screen.fade-out{
+    opacity:0; pointer-events:none;
+  }
 /* 汉堡按钮：默认隐藏，等滚到 .profile 再显示 */
 .hamburger{
     position: fixed;
@@ -424,9 +472,9 @@ html, body {
 .paro-navi{
     z-index:999;
     position:absolute;
-    width:93.89px;
-    height:504.42px;
-    margin-left:18%;
+    width:112px;
+    height:46%;
+    margin-left:16%;
     display:flex;
     align-items:center;
     flex-direction:column;
@@ -437,8 +485,8 @@ html, body {
     opacity:0.7;
     margin:15px 0;
     cursor: pointer;
-    width:75.112px;
-    height:75.112px;
+    width:90px;
+    aspect-ratio:1 / 1;
     flex-shrink: 0; /* 新增此行 */
     background-color:#fff;
     background-position:center;
@@ -491,8 +539,8 @@ html, body {
 .paro-wrap{
     z-index:3;
     position:absolute;
-    width:759px;
-    height:576px;
+    width:59.2%;
+    height:59.19%;
     background-position:center;
     background-size:contain;
     background-repeat:no-repeat;
@@ -583,10 +631,10 @@ html, body {
 /* 保持你原本的 .light 样式 */
 .light{
     padding:0;
-    width:184.96px;
+    width:14.4%;
     height:440px;
     background-image:url('./img/light-before.svg');
-    background-position:center;
+    background-position:top;
     background-repeat:no-repeat;
     background-size:contain;
     position:absolute;
@@ -623,15 +671,15 @@ html, body {
     width:80%;
     display:flex;
     align-items:center;
+    
 }
-
 #gallery-box-1{
-    height:364px;
+    height:50%;
     justify-content:space-between;
 }
 #gallery-box-1 img{
-    height:100%;
-    width:auto;
+    height:auto;
+    width:30%;
     border-radius:3px;
 }
 #gallery-box-2 {
@@ -643,12 +691,12 @@ html, body {
     border-radius:3px;
 }
 #gallery-box-3{
-    height:318px;
+    height:fit-content;
     justify-content:space-between;
 }
 #gallery-box-3 img{
-    height:100%;
-    width:auto;
+    height:auto;
+    width:48%;
     border-radius:3px;
 }
 .gallery-button-wrap{
@@ -673,8 +721,6 @@ html, body {
 .gallery-button-wrap a img:hover{
     transform:scale(0.9);
 }
-
-
 /* 让 .paro-navi 的滚动更平滑 */
 .paro-navi {
     /* ... 你的现有样式 ... */
@@ -759,12 +805,30 @@ html, body {
     position:relative;
 }
 .top-btn{
+    overflow:visible;
     z-index:800;
     position:absolute;
     cursor: pointer;
     text-decoration:none;
     bottom:80px;
 }
+/* ===== Top按钮上下浮动动画 ===== */
+.top-btn img {
+    animation: floatUpDown 3s ease-in-out infinite;
+  }
+  
+  @keyframes floatUpDown {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-19px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
 .footer-text{
     width:100%;
     height:30px;
@@ -775,66 +839,10 @@ html, body {
     bottom:15%;
 }
 .footer-text a{
-
     margin-left:10px;
     font-size:24px;
     font-family: 'MuyaoSoftbrush', sans-serif;
 }
-/* ===== 加载画面（整层覆盖） ===== */
-#loading-screen{
-    position:fixed; inset:0;
-    display:flex; flex-direction:column; align-items:center; justify-content:center;
-    gap:18px;            /* 元素之间的间距（电池-文字-GIF） */
-    background:#f7f4ef;     /* 与示意图一致的干净底色 */
-    z-index:99999;
-    transition:opacity .8s ease;
-  }
-  
-  /* ===== 电池（小尺寸） ===== */
-  .battery-frame{
-    width:60px;          /* 更小的电池宽度 */
-    height:24px;         /* 更小的电池高度 */
-    border:3px solid #222;
-    border-radius:6px;
-    position:relative;
-    box-sizing:border-box;
-  }
-  .battery-frame::after{
-    content:"";
-    position:absolute; right:-8px; top:25%;
-    width:6px; height:50%;
-    background:#222; border-radius:1px;
-  }
-  .battery-level{
-    position:absolute; inset:0;
-    width:0%; height:100%;
-    background:#7ec66a;
-    border-radius:3px;
-    transition:width .18s ease;
-  }
-  
-  /* ===== Loading... 文字（使用 MuyaoSoftbrush） ===== */
-  .loading-text{
-    font-family: 'MuyaoSoftbrush', system-ui, sans-serif;
-    font-size:24px;            /* 比例感更贴近示意图 */
-    letter-spacing:.5px;
-    color:#222;
-    margin-top:2px;
-    user-select:none;
-  }
-  
-  /* ===== 下方图片（更大） ===== */
-  .loading-gif{
-    width:min(300px, 30vw);    /* 桌面更大，窄屏自适应 */
-    height:auto;
-    opacity:1;
-  }
-  
-  /* 加载完成淡出 */
-  #loading-screen.fade-out{
-    opacity:0; pointer-events:none;
-  }
-  
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
     html {
       zoom: 1; /* 保持原始比例显示 */
@@ -881,53 +889,38 @@ html, body {
 }
 
 @media only screen and (max-width: 500px) {
-    .hamburger{
-        top: 70px;
-        left: 70px;
-        width:120px;
-        height:120px;
-        gap:15px;
-        background: #ffffffcc;
-        border:10px;
-      }
-      .hamburger span{
-        display: block;
-        width:80px;
-        height:5px;
-      }
-      /* 打开时的“X”形态 */
-      .hamburger.active span:nth-child(1){ transform: translateY(20px) rotate(45deg); }
-      .hamburger.active span:nth-child(2){ opacity: 0; }
-      .hamburger.active span:nth-child(3){ transform: translateY(-20px) rotate(-45deg); }
-      
-      /* 打开菜单时：复用你已有的 .nav-wrap，但改为固定在左上角并显示 */
-      body.nav-open .nav-wrap{
-        top:200px;
-        left:60px;
-        padding: 20px 50px;
-      }
+/* ===== Loading... 文字（使用 MuyaoSoftbrush） ===== */
+.loading-text{
+    font-size:18px;  
+    margin-top:10px;  
+    margin-bottom:20px;        /* 比例感更贴近示意图 */
+  }
+  .loading-gif{
+    scale:2;   /* 桌面更大，窄屏自适应 */
+  }
 /*-----------top——————————————*/
    .top{
-        height:2400px;
+        height:100vh;
+        width:100vw;
     }
     .logo{
         width:25%;
     }
     .nav-wrap{
-        top:16%;
-        height:390px;
+        top:14%;
+        height:130px;
     }
     /*丸がボタンに変形する*/
     .btntransform{
-        font-size:62px;
+        font-size:18px;
     }
     .btntransform::before{
-        width:68px;
-        height:68px;
-        border-radius:50px;
+        width:24px;
+        height:24px;
+        border-radius:25px;
     }
     .btntransform:hover::before{
-        width:260px;
+        width:150px;
     } 
     #top-stamp-2{
         width:65%;
@@ -975,38 +968,52 @@ html, body {
     #top-stamp-13,#top-stamp-10,#top-stamp-11,#top-stamp-12{
 display:none;
     } 
+    .roll-stamp{
+        width:100vw;
+        height:50px;
+      }
+      .roll-stamp img{
+        height:50px;
+      }
 /*------------profile------------*/
     .profile{
-        height:2400px;
+        width:100vw;
+        height:90vh;
+        position:relative;
+    }
+    .profile-title{
+        margin-top:15%;
+        width:140px;
+        height:auto;
     }
     .profile-1{
         width:50%;
-        margin-top:20%;
+        height:auto;
+        position:absolute;
+        z-index:1;
+        margin-top:28%;
         margin-left:40%;
     }
     .profile-2{
-        width:51.1%;
-        margin-top:133%;
-        margin-left:5%;
-    }
-    .profile-1-img{
-        margin-top:23%;
-        margin-left:2%;
-        width:55%;
-        height:1000px;
-    }
+        width:50%;
+        margin-top:125%;
+        margin-left:6%;}
+   .profile-1-img{
+    margin-top:-12%;
+    margin-left:5%;
+    width:50%;
+    height:654.23px;}
     .profile-2-img{
-        margin-top:100%;
-        margin-left:40%;
-        width:57.1%;
-        height:1000px;
-    }
+        margin-top:50%;
+        margin-left:45%;
+        width:53%;
+    }    
     .profile-bottom {
         position: absolute;   /* 让它相对父元素定位 */
         bottom: 0;            /* 紧贴底部 */
         left: 0;
         width: 100%;
-        height: 81px;
+        height:30px;
         display:flex;
         align-items:center;
         justify-content:center;
@@ -1017,74 +1024,82 @@ display:none;
     }  
 /*-------------paro-------------*/
 .paro{
+    width:100vw;
     flex-direction:row-reverse;
 }
+.paro-page-btn{
+    scale:0.5;
+    margin-top:50%;
+    margin-right:15%;
+}
 .paro-title{
+    width:80px;
+    height:auto;
     margin-right:5%;
     margin-top:1%;
-    margin-bottom:65%;
+    margin-bottom:60%;
 }
-.paro-page-btn{
-    scale:1.8;
-    margin-top:55%;
-    margin-right:44%;
-}
-.paro-navi{
-    width:200px;
-    height:700px;
-    margin-right:8%;
-}
-.paro-navi a{
-    width:150px;
-    height:150px;
-    margin:20px 0;
-}
-.paro-navi a.active {
-    transform: scale(1.12);
-
-    width:150px;
-    height:150px;
-  }
   .paro-nav-arrow{
     display:none;
   }
   .paro-wrap{
     margin-bottom:10%;
     margin-right:30%;
-    scale:1.1;
   }
-  .gallery-button-wrap{
-scale:1.3;
-margin-bottom:20%;
+  .paro-navi{
+    width:50px;
+    height:70%;
+    margin-left:0;
+    margin-right:10%;
+}
+.paro-navi a{
+    margin:6px 0;
+    cursor: pointer;
+    width:40px;
+}
+.paro-navi a.active {
+    transform: scale(1.1);
+    opacity:1;
+    width:50px;
+    height:50px;
+    transition: transform 0.3s ease;
+  }
+.gallery{
+    width:100vw;
+}
+.gallery-title{
+    width:140px;
+    height:auto;
+}
+.gallery-button-wrap{
+    width:100%;
+    height:64px;
+    margin-top:8%;
+    margin-bottom:8%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 .gallery-button-wrap a{
-    margin:0 50px;
+    text-decoration:none;
+    cursor:pointer;
+    margin:0 16px;
 }
 .gallery-button-wrap a img{
-    scale:1.3;
+    width:138px;
+    height:30.99px;
+    transition:transform 0.2s ease-in-out;
 }
-/* ===== 加载画面（整层覆盖） ===== */
-#loading-screen{
-    position:fixed; inset:0;
-    display:flex; flex-direction:column; align-items:center; justify-content:center;
-    gap:18px;            /* 元素之间的间距（电池-文字-GIF） */
-    background:#f7f4ef;     /* 与示意图一致的干净底色 */
-    z-index:99999;
-    transition:opacity .8s ease;
-  }
-  
-  /* ===== 电池（小尺寸） ===== */
-  .battery-frame{
-scale:4;
-  }
-  /* ===== Loading... 文字（使用 MuyaoSoftbrush） ===== */
-  .loading-text{
-    font-size:64px;  
-    margin-top:100px;  
-    margin-bottom:260px;        /* 比例感更贴近示意图 */
-  }
-  .loading-gif{
-    scale:8;   /* 桌面更大，窄屏自适应 */
-  }
-  
+.footer{
+    height:300px;
+    width:100vw;
 }
+.top-btn img{
+    width:179.89px;
+    height:auto;
+}
+}
+
+
+
+  
