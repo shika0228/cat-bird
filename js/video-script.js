@@ -111,3 +111,18 @@ gsap.fromTo(
         },
     }
 )
+const light = document.querySelector('.light');
+let lightOn = false;
+
+light.addEventListener('click', function () {
+  lightOn = !lightOn;
+  if (lightOn) {
+    this.style.backgroundImage = "url('./img/light-after.svg')";
+    document.body.style.backgroundColor = '#131313';
+    document.querySelectorAll('.btntransform').forEach(btn => btn.style.color = '#ffffff');
+  } else {
+    this.style.backgroundImage = "url('./img/light-before.svg')";
+    document.body.style.backgroundColor = '#f7f4ef';
+    document.querySelectorAll('.btntransform').forEach(btn => btn.style.color = '#3f3f3f');
+  }
+});

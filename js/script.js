@@ -449,3 +449,58 @@ window.addEventListener("load", () => {
     }
   }, 160);
 });
+// === Gallery 图片放大预览（小屏≤500px强制 90% 屏幕宽度） ===
+document.querySelectorAll('.gallery-box img').forEach(img => {
+  img.addEventListener('click', () => {
+    const overlay = document.createElement('div');
+    overlay.classList.add('img-overlay');
+
+    const enlarged = document.createElement('img');
+    enlarged.src = img.src;
+    enlarged.classList.add('img-enlarged');
+    overlay.appendChild(enlarged);
+    document.body.appendChild(overlay);
+    document.body.style.overflow = 'hidden';
+
+    function applySizing() {
+      const isSmall = window.innerWidth <= 500;
+
+      if (isSmall) {
+        // 小屏：宽度固定 90vw，高度自适应且不超过 90vh
+        enlarged.style.width = '90vw';
+        enlarged.style.height = 'auto';
+        enlarged.style.maxHeight = '90vh';
+        enlarged.style.transform = 'scale(1)'; // 不额外缩放
+        enlarged.style.opacity = '1';
+      } else {
+        // 大屏：自适应最大化（留 10% 边距）
+        const screenW = window.innerWidth * 0.9;
+        const screenH = window.innerHeight * 0.9;
+        const ratioW  = screenW / enlarged.naturalWidth;
+        const ratioH  = screenH / enlarged.naturalHeight;
+        const scale   = Math.min(ratioW, ratioH, 1);
+        enlarged.style.width = '';     // 清空小屏设置，走缩放
+        enlarged.style.height = '';
+        enlarged.style.maxHeight = '';
+        enlarged.style.transform = `scale(${scale})`;
+        enlarged.style.opacity = '1';
+      }
+    }
+
+    // 图片加载后计算尺寸
+    enlarged.onload = applySizing;
+
+    // 窗口尺寸变化时，仍保持规则
+    window.addEventListener('resize', applySizing, { passive: true });
+
+    // 点击外围关闭
+    overlay.addEventListener('click', e => {
+      if (e.target === overlay) {
+        overlay.classList.add('fade-out');
+        document.body.style.overflow = '';
+        window.removeEventListener('resize', applySizing);
+        setTimeout(() => overlay.remove(), 300);
+      }
+    });
+  });
+});
