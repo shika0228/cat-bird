@@ -274,12 +274,7 @@ body{
         .gallery{
         columns: 2;
         }	
-    }
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
-        html {
-          zoom: 1; /* 保持原始比例显示 */
-        }
-      }    
+    }   
 @media only screen and (max-width: 500px) {
 
     body{
@@ -392,6 +387,10 @@ body{
     }
     #navi-box-13{
         border-bottom:1px solid #EEB76A;;
+    }
+    .text-short-special{
+        height:140px;
+        width:auto;
     }
 
 }

@@ -11,19 +11,33 @@
     font-weight: normal;
     font-style: normal;
   }
-html, body {
-    min-width: 1280px;         /* 桌面基准宽度 */
-  }
-  @media (min-width: 1441px) {
-    html, body { overflow-x: hidden; } /* 大屏通常不需要横向滚动 */
-  }
-*{
+*{ padding:0;
     scroll-behavior:smooth;
     margin:0;
 }
 body{
-  background-color:#1a1a1a;
-  position: relative;
+  padding:0;
+  background-color:#f7f4ef;
+}
+/* 保持你原本的 .light 样式 */
+.light{
+  top:0;
+  padding:0;
+  width:14.4%;
+  height:440px;
+  background-image:url('./img/light-before.svg');
+  background-position:top;
+  background-repeat:no-repeat;
+  background-size:contain;
+  position:absolute;
+  z-index:2;
+  margin-left:80%;
+  cursor:pointer;
+}
+
+/* “点亮后”的持久状态（用类名控制，不用 :active） */
+.light.on{
+  background-image:url('./img/light-after.svg');
 }
 .nav-wrap{
     margin-left:5%;
@@ -36,7 +50,7 @@ body{
     font-family: 'MuyaoSoftbrush', sans-serif;
 	position: relative;
 	padding:0 0 0 15px;
-    color: #ffffff;
+    color: #3f3f3f;
     text-decoration: none;
     outline: none;
     display:flex;
@@ -72,19 +86,18 @@ body{
   justify-content:center;
 }
 .all-title{
-  width:192px;
-  height:52px;
-
+  width:120px;
+  height:auto;
 }
 .video{
   margin:0 auto;
   margin-bottom:15%;
-  width:70%;
+  width:60%;
   height:fit-content;
 }
 .video-3{
-  width:fit-content;
-  height:90vh;
+  width:30%;
+  height:fit-content;
 }
 .video video{
   width:100%;
@@ -92,8 +105,8 @@ body{
   border-radius: 10px;
 }
 .video-3 video{
-  width:auto;
-  height:100%;
+  width:100%;
+  height:auto;
   border-radius: 10px;
 }
 /*-----------------footer--------------*/
@@ -132,4 +145,87 @@ body{
   margin-left:10px;
   font-size:24px;
   font-family: 'MuyaoSoftbrush', sans-serif;
+}
+.top-btn img {
+  animation: floatUpDown 3s ease-in-out infinite;
+}
+
+@keyframes floatUpDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-19px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@media only screen and (max-width: 500px) {
+  .title{
+    margin-top:15%;
+    margin-bottom:5%;
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .all-title{
+    width:80px;
+    height:auto;
+  } 
+  .nav-wrap{
+    margin-top:-5%;
+    margin-left:5%;
+    position:fixed;
+    z-index:999;
+}
+/*丸がボタンに変形する*/
+.btntransform{
+    font-size:18px;
+    font-family: 'MuyaoSoftbrush', sans-serif;
+	position: relative;
+	padding:0 0 0 15px;
+    color: #3f3f3f;
+    text-decoration: none;
+    outline: none;
+    display:flex;
+    align-items:center;
+}
+.btntransform::before{
+	width:24px;
+	height:24px;
+}
+
+.btntransform:hover::before{
+	width:110px;
+}
+.video{
+  margin:0 auto;
+  margin-bottom:20%;
+  width:90%;
+  height:fit-content;
+}
+.video-3{
+  width:80%;
+  height:fit-content;
+}
+.video video{
+  width:100%;
+  height:auto;
+  border-radius:3px;
+}
+.video-3 video{
+  width:100%;
+  height:auto;
+  border-radius: 10px;
+}
+.footer{
+  height:300px;
+  width:100vw;
+}
+.top-btn img{
+  width:179.89px;
+  height:auto;
+}
 }

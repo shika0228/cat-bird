@@ -673,6 +673,9 @@
     align-items:center;
     
 }
+.gallery img{
+    cursor: pointer;
+}
 #gallery-box-1{
     height:50%;
     justify-content:space-between;
@@ -843,51 +846,45 @@
     font-size:24px;
     font-family: 'MuyaoSoftbrush', sans-serif;
 }
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
-    html {
-      zoom: 1; /* 保持原始比例显示 */
-    }
+/* === 图片放大预览样式 === */
+.img-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.765);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    animation: fadeIn 0.3s ease forwards;
   }
-@media screen and (min-width: 1441px) {
-    .top{
-        height:1200px;
-    }
-    .profile{
-        height:1600px;
-    }
-    .profile-1-img{
-        width:45%;
-        height:750px;
-        margin-left:3%;
-    }
-    .profile-2-img{
-        margin-left:53%;
-        width:45.1%;
-        height:750px;
-    }
-    .paro-navi{
-        width:110px;
-        height:650px;
-        margin-left:20%;
-    }
-    .paro-navi a{
-        width:100px;
-        height:100px;}
-.paro-wrap{
-    height:650px;
-    width:856.51px;
-}
-.paro-nav-arrow {
-    left: calc(20% + 50px); 
-}
-#gallery-box-1{
-    height:500px;
-}
-#gallery-box-3{
-    height:450px;
-}
-}
-
+  
+  .img-overlay.fade-out {
+    animation: fadeOut 0.3s ease forwards;
+  }
+  
+  .img-enlarged {
+    max-width: 90%;
+    max-height: 90%;
+    opacity: 0;
+    transform: scale(0.8);
+    border-radius: 6px;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.25);
+    transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1), 
+                opacity 0.4s ease-out;
+    cursor: zoom-out;
+  }
+  
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+  
 @media only screen and (max-width: 500px) {
 /* ===== Loading... 文字（使用 MuyaoSoftbrush） ===== */
 .loading-text{
@@ -920,7 +917,7 @@
         border-radius:25px;
     }
     .btntransform:hover::before{
-        width:150px;
+        width:100px;
     } 
     #top-stamp-2{
         width:65%;
@@ -978,11 +975,11 @@ display:none;
 /*------------profile------------*/
     .profile{
         width:100vw;
-        height:90vh;
+        height:100vh;
         position:relative;
     }
     .profile-title{
-        margin-top:15%;
+        margin-top:10%;
         width:140px;
         height:auto;
     }
@@ -996,18 +993,19 @@ display:none;
     }
     .profile-2{
         width:50%;
-        margin-top:125%;
+        margin-top:132%;
         margin-left:6%;}
    .profile-1-img{
-    margin-top:-12%;
+    margin-top:25%;
     margin-left:5%;
     width:50%;
-    height:654.23px;}
+    height:400px;}
     .profile-2-img{
-        margin-top:50%;
+        margin-top:95%;
         margin-left:45%;
-        width:53%;
-    }    
+        width:52%;
+        height:400px;
+    }  
     .profile-bottom {
         position: absolute;   /* 让它相对父元素定位 */
         bottom: 0;            /* 紧贴底部 */
@@ -1067,6 +1065,9 @@ display:none;
 .gallery{
     width:100vw;
 }
+.gallery img{
+    border-radius:3px;
+}
 .gallery-title{
     width:140px;
     height:auto;
@@ -1098,6 +1099,12 @@ display:none;
     width:179.89px;
     height:auto;
 }
+.img-enlarged {
+    width: 90vw !important;
+    height: auto !important;
+    max-height: 90vh !important;
+    transform: scale(1) !important; /* 与 JS 保持一致，避免二次缩放 */
+  }
 }
 
 
