@@ -69,3 +69,31 @@ window.addEventListener("load", () => {
     }
   }, 160);
 });
+// === 音乐控制 ===
+const bgm = document.getElementById('bgm');
+const record = document.querySelector('.record');
+
+if (bgm && record) {
+  let isPlaying = false;
+
+  record.addEventListener('click', () => {
+    if (!isPlaying) {
+      bgm.play();
+      record.style.animationPlayState = 'running';
+    } else {
+      bgm.pause();
+      record.style.animationPlayState = 'paused';
+    }
+    isPlaying = !isPlaying;
+  });
+
+  // 当音乐被用户手动暂停或播放时（非点击图片）
+  bgm.addEventListener('play', () => {
+    record.style.animationPlayState = 'running';
+    isPlaying = true;
+  });
+  bgm.addEventListener('pause', () => {
+    record.style.animationPlayState = 'paused';
+    isPlaying = false;
+  });
+}
