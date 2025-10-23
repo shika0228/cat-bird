@@ -357,7 +357,7 @@ body{
         border-radius:25px;
     }
     .btntransform:hover::before{
-        width:200px;
+        width:150px;
     } 
     .navi-title{
      display:none;

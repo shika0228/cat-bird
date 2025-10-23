@@ -234,7 +234,7 @@ font-weight:400;
         border-radius:25px;
     }
     .btntransform:hover::before{
-        width:200px;
+        width:150px;
     } 
     .all-title{
      width:150px;
