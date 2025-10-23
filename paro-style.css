@@ -19,6 +19,29 @@
 body{
     display:flex;
 }
+/*-------------music------------*/
+.music-wrap{
+    position:fixed;
+    top:3%;
+    right:3%;
+    width:33px;
+    height:33px;
+    z-index:999;
+}  
+.record {
+    width: 100%;
+    height: 100%;
+    animation: spin 5s linear infinite;
+    animation-play-state: paused; /* 默认不转动 */
+    transform-origin: center center;
+    cursor: pointer;
+  }
+  
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(-360deg); } /* 逆时针 */
+  }
+  
 .left-box-wrap{
     position:fixed;
     width:239px;
