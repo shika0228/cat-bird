@@ -1,15 +1,17 @@
 @font-face {
     font-family: 'JinNianYeYaoJiaYouYa';
-    src: url('fonts/JinNianYeYaoJiaYouYa-2.ttf') format('truetype');
+    src: url('fonts/JinNianYeYaoJiaYouYa-2.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
   }
   
   @font-face {
     font-family: 'MuyaoSoftbrush';
-    src: url('fonts/Muyao-Softbrush-2.ttf') format('truetype');
+    src: url('fonts/Muyao-Softbrush-2.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
   }
   @media (min-width: 1441px) {
     html, body { overflow-x: hidden; } /* 大屏通常不需要横向滚动 */

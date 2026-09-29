@@ -1,15 +1,17 @@
 @font-face {
     font-family: 'JinNianYeYaoJiaYouYa';
-    src: url('fonts/JinNianYeYaoJiaYouYa-2.ttf') format('truetype');
+    src: url('fonts/JinNianYeYaoJiaYouYa-2.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
   }
   
   @font-face {
     font-family: 'MuyaoSoftbrush';
-    src: url('fonts/Muyao-Softbrush-2.ttf') format('truetype');
+    src: url('fonts/Muyao-Softbrush-2.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
   }
 *{
   scroll-behavior: smooth;
@@ -129,7 +131,7 @@ body{
     width:calc(100% - 239px);
     height:fit-content;
     margin-left:239px;
-    background-image:url('./paro-img/paro-bg.png');
+    background-image:url('./paro-img/paro-bg.webp');
     background-size:contain;
 }
 .paro-box{
@@ -144,40 +146,40 @@ body{
     
 }
 #paro-1{
-    background-image:url('./paro-img/paro-1-bg.png');
+    background-image:url('./paro-img/paro-1-bg.webp');
 }
 #paro-2{
-    background-image:url('./paro-img/paro-2-bg.png');
+    background-image:url('./paro-img/paro-2-bg.webp');
 }
 #paro-3{
-    background-image:url('./paro-img/paro-3-bg.png');
+    background-image:url('./paro-img/paro-3-bg.webp');
 }
 #paro-4{
-    background-image:url('./paro-img/paro-4-bg.png');
+    background-image:url('./paro-img/paro-4-bg.webp');
 }
 #paro-5{
-    background-image:url('./paro-img/paro-5-bg.png');
+    background-image:url('./paro-img/paro-5-bg.webp');
 }
 #paro-6{
-    background-image:url('./paro-img/paro-6-bg.png');
+    background-image:url('./paro-img/paro-6-bg.webp');
 }
 #paro-7{
-    background-image:url('./paro-img/paro-7-bg.png');
+    background-image:url('./paro-img/paro-7-bg.webp');
 }
 #paro-8{
-    background-image:url('./paro-img/paro-8-bg.png');
+    background-image:url('./paro-img/paro-8-bg.webp');
 }
 #paro-9{
-    background-image:url('./paro-img/paro-9-bg.png');
+    background-image:url('./paro-img/paro-9-bg.webp');
 }
 #paro-10{
-    background-image:url('./paro-img/paro-10-bg.png');
+    background-image:url('./paro-img/paro-10-bg.webp');
 }
 #paro-12{
-    background-image:url('./paro-img/paro-12-bg.png');
+    background-image:url('./paro-img/paro-12-bg.webp');
 }
 #paro-13{
-    background-image:url('./paro-img/paro-13-bg.png');
+    background-image:url('./paro-img/paro-13-bg.webp');
 }
 .box-title{
     margin:3% 0;
@@ -485,5 +487,4 @@ overflow-y: scroll;
     }
 
 }
-
 

@@ -1,15 +1,17 @@
 @font-face {
     font-family: 'JinNianYeYaoJiaYouYa';
-    src: url('fonts/JinNianYeYaoJiaYouYa-2.ttf') format('truetype');
+    src: url('fonts/JinNianYeYaoJiaYouYa-2.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
   }
   
   @font-face {
     font-family: 'MuyaoSoftbrush';
-    src: url('fonts/Muyao-Softbrush-2.ttf') format('truetype');
+    src: url('fonts/Muyao-Softbrush-2.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
   }
 *{
   scroll-behavior: smooth;
@@ -151,7 +153,7 @@
     position:relative;
     width:100%;
     height:112vh;
-    background-image:url('./img/top-bg.jpg');
+    background-image:url('./img/top-bg.webp');
     background-position:center;
     background-size:cover;
     background-repeat:no-repeat;
@@ -369,7 +371,7 @@
 .profile{
     width:100%;
     height:1300px;
-    background-image:url('./img/profile-bg.png');
+    background-image:url('./img/profile-bg.webp');
     background-position:center;
     background-size:cover;
     background-repeat:no-repeat;
@@ -409,7 +411,7 @@
     margin-left:5%;
     width:36%;
     height:654.23px;
-    background-image:url('./img/profile-1-img.png');
+    background-image:url('./img/profile-1-img.webp');
     background-position:center;
     background-repeat:no-repeat;
     background-size:contain;
@@ -417,7 +419,7 @@
     transition:background-image 0.3s ease-in-out;
 }
 .profile-1-img:hover{
-    background-image:url('./img/profile-img-1-after.png');
+    background-image:url('./img/profile-img-1-after.webp');
 }
 .profile-2-img{
     position:absolute;
@@ -426,7 +428,7 @@
     margin-left:59%;
     width:37.1%;
     height:652.74px;
-    background-image:url('./img/profile-2-img.png');
+    background-image:url('./img/profile-2-img.webp');
     background-position:center;
     background-repeat:no-repeat;
     background-size:contain;
@@ -434,7 +436,7 @@
     transition:background-image 0.3s ease-in-out;
 }
 .profile-2-img:hover{
-    background-image:url('./img/profile-2-after.png');
+    background-image:url('./img/profile-2-after.webp');
 }
 .profile-bottom {
     position: absolute;   /* 让它相对父元素定位 */
@@ -520,43 +522,43 @@
     transform:scale(1.1);
 }
 #paro-navi-1{
-    background-image:url('./img/paro-navi-1.png');
+    background-image:url('./img/paro-navi-1.webp');
 }
 #paro-navi-2{
-    background-image:url('./img/paro-navi-2.png');
+    background-image:url('./img/paro-navi-2.webp');
 }
 #paro-navi-3{
-    background-image:url('./img/paro-navi-3.png');
+    background-image:url('./img/paro-navi-3.webp');
 }
 #paro-navi-4{
-    background-image:url('./img/paro-navi-4.png');
+    background-image:url('./img/paro-navi-4.webp');
 }
 #paro-navi-5{
-    background-image:url('./img/paro-navi-5.png');
+    background-image:url('./img/paro-navi-5.webp');
 }
 #paro-navi-6{
-    background-image:url('./img/paro-navi-6.png');
+    background-image:url('./img/paro-navi-6.webp');
 }
 #paro-navi-7{
-    background-image:url('./img/paro-navi-7.png');
+    background-image:url('./img/paro-navi-7.webp');
 }
 #paro-navi-8{
-    background-image:url('./img/paro-navi-8.png');
+    background-image:url('./img/paro-navi-8.webp');
 }
 #paro-navi-9{
-    background-image:url('./img/paro-navi-9.png');
+    background-image:url('./img/paro-navi-9.webp');
 }
 #paro-navi-10{
-    background-image:url('./img/paro-navi-10.png');
+    background-image:url('./img/paro-navi-10.webp');
 }
 #paro-navi-11{
-    background-image:url('./img/paro-navi-11.png');
+    background-image:url('./img/paro-navi-11.webp');
 }
 #paro-navi-12{
-    background-image:url('./img/paro-navi-12.png');
+    background-image:url('./img/paro-navi-12.webp');
 }
 #paro-navi-13{
-    background-image:url('./img/paro-navi-13.png');
+    background-image:url('./img/paro-navi-13.webp');
 }
 .paro-wrap{
     z-index:3;
@@ -582,55 +584,55 @@
 }
 #paro-box-1{
     z-index:1;
-    background-image:url('./img/paro-box-1.png');
+    background-image:url('./img/paro-box-1.webp');
 }
 #paro-box-2{
     z-index:2;
-    background-image:url('./img/paro-box-2.png');
+    background-image:url('./img/paro-box-2.webp');
 }
 #paro-box-3{
     z-index:3;
-    background-image:url('./img/paro-box-3.png');
+    background-image:url('./img/paro-box-3.webp');
 }
 #paro-box-4{
     z-index:4;
-    background-image:url('./img/paro-box-4.png');
+    background-image:url('./img/paro-box-4.webp');
 }
 #paro-box-5{
     z-index:5;
-    background-image:url('./img/paro-box-5.png');
+    background-image:url('./img/paro-box-5.webp');
 }
 #paro-box-6{
     z-index:6;
-    background-image:url('./img/paro-box-6.png');
+    background-image:url('./img/paro-box-6.webp');
 }
 #paro-box-7{
     z-index:7;
-    background-image:url('./img/paro-box-7.png');
+    background-image:url('./img/paro-box-7.webp');
 }
 #paro-box-8{
     z-index:8;
-    background-image:url('./img/paro-box-8.png');
+    background-image:url('./img/paro-box-8.webp');
 }
 #paro-box-9{
     z-index:9;
-    background-image:url('./img/paro-box-9.png');
+    background-image:url('./img/paro-box-9.webp');
 }
 #paro-box-10{
     z-index:10;
-    background-image:url('./img/paro-box-10.png');
+    background-image:url('./img/paro-box-10.webp');
 }
 #paro-box-11{
     z-index:11;
-    background-image:url('./img/paro-box-11.png');
+    background-image:url('./img/paro-box-11.webp');
 }
 #paro-box-12{
     z-index:12;
-    background-image:url('./img/paro-box-12.png');
+    background-image:url('./img/paro-box-12.webp');
 }
 #paro-box-13{
     z-index:13;
-    background-image:url('./img/paro-box-13.png');
+    background-image:url('./img/paro-box-13.webp');
 }
 /*---------------gallery--------------*/
 .gallery{
@@ -816,7 +818,7 @@
 .footer{
     width:100%;
     height:343px;
-    background-image:url('./img/footer-bg.png');
+    background-image:url('./img/footer-bg.webp');
     background-position:center;
     background-repeat:no-repeat;
     background-size:cover;
